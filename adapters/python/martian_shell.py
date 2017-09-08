@@ -160,7 +160,7 @@ class _Metadata(object):
         self.files_path = files_path
         self.journal_prefix = journal_prefix
 
-        if test:
+        if test or True:
             self._logfile = sys.stdout
         else:
             self._logfile = os.fdopen(3, 'a')
@@ -253,7 +253,7 @@ class _Metadata(object):
     @staticmethod
     def write_errors(message):
         """Write to the errors file."""
-        with os.fdopen(4, 'w') as error_out:
+        with sys.stderr as error_out:
             error_out.write(message)
 
     def write_assert(self, message):
